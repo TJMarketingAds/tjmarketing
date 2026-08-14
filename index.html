@@ -16,11 +16,10 @@
      The script at the bottom keeps every copy in sync from BOOKING below, so
      in practice you only edit the two values there.
 
-     Currently: audit  = your live Calendly 1-hour event
-                client = mailto, because Calendly's free plan allows only ONE
-                         event type. Once you create a second event (Cal.com's
-                         free plan allows unlimited), paste its URL into
-                         BOOKING.client at the bottom of this file.
+     Both currently point at the SAME Calendly event. That is deliberate:
+     the booking form asks "What is the reason for your booking?" with
+     "Free Meta Ads Audit" / "Existing Client Strategy Session", so one
+     event type routes both. No second calendar needed.
 
      Keep these in sync with .env in tj-marketing-sync:
        CALENDAR_AUDIT_URL   = the audit link
@@ -315,8 +314,8 @@
         <div class="path-who">Existing client</div>
         <h3>Client Meeting</h3>
         <p>You're already running ads with me. Monthly review, results walkthrough, next month's plan, or anything you want to change.</p>
-        <div class="path-meta">Zoom · monthly check-in or ad-hoc</div>
-        <a data-book="client" href="mailto:tjmarketingleads@gmail.com?subject=Client%20meeting%20request" class="btn-secondary">Request a client meeting →</a>
+        <div class="path-meta">Zoom · pick "Existing Client Strategy Session" when booking</div>
+        <a data-book="client" href="https://calendly.com/tjmarketingleads/1hour" target="_blank" rel="noopener" class="btn-secondary">Book a client session →</a>
       </div>
 
     </div>
@@ -403,7 +402,7 @@
         <a href="#how" style="font-size: 0.82rem; color: #555;">How it works</a>
         <a href="#faq" style="font-size: 0.82rem; color: #555;">FAQ</a>
         <a data-book="audit" href="https://calendly.com/tjmarketingleads/1hour" target="_blank" rel="noopener" style="font-size: 0.82rem; color: #555;">Free audit</a>
-        <a data-book="client" href="mailto:tjmarketingleads@gmail.com?subject=Client%20meeting%20request" style="font-size: 0.82rem; color: #555;">Client meeting</a>
+        <a data-book="client" href="https://calendly.com/tjmarketingleads/1hour" target="_blank" rel="noopener" style="font-size: 0.82rem; color: #555;">Client session</a>
       </div>
       <div style="font-size: 0.82rem; color: #555;">© 2026 TJ Marketing. All rights reserved.</div>
     </div>
@@ -425,7 +424,10 @@
      ───────────────────────────────────────────────────────────────────────── */
   var BOOKING = {
     audit:  "https://calendly.com/tjmarketingleads/1hour",
-    client: "mailto:tjmarketingleads@gmail.com?subject=Client%20meeting%20request"
+    // Same Calendly event as the audit — the booking form asks "What is the
+    // reason for your booking?" and routes on the answer, so one event type
+    // serves both. Pick "Existing Client Strategy Session" there.
+    client: "https://calendly.com/tjmarketingleads/1hour"
   };
 
   document.querySelectorAll('[data-book]').forEach(function (el) {
