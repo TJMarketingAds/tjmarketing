@@ -1,0 +1,175 @@
+<!--
+  TJ Marketing — Leave A Review
+  Standalone page, matches the main site's look. Submits via Formspree
+  (endpoint: https://formspree.io/f/mqpklpyg).
+  Every submission shows up in your Formspree dashboard AND email —
+  you can turn off email notifications in Formspree's settings if you
+  only want the dashboard.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave A Review — TJ Marketing</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray-100: #f5f5f5;
+    --gray-200: #e8e8e8;
+    --gray-500: #888;
+    --gray-700: #444;
+    --accent: #1a1aff;
+    --star: #f5a623;
+  }
+  body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; color: var(--black); background: var(--gray-100); line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 3rem 1.25rem; }
+  a { color: var(--accent); }
+
+  .card { background: var(--white); border-radius: 16px; padding: 2.5rem; max-width: 520px; width: 100%; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
+  .logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 0.35rem; }
+  .logo span { color: var(--accent); }
+  h1 { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 0.5rem; }
+  .sub { color: var(--gray-700); font-size: 0.95rem; margin-bottom: 2rem; }
+
+  label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.4rem; margin-top: 1.25rem; }
+  label:first-of-type { margin-top: 0; }
+  input[type="text"], textarea { width: 100%; border: 1.5px solid var(--gray-200); border-radius: 8px; padding: 0.7rem 0.85rem; font-size: 0.95rem; font-family: inherit; color: var(--black); }
+  input[type="text"]:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 110px; }
+
+  .stars { display: flex; gap: 0.35rem; margin-top: 0.5rem; }
+  .stars button { background: none; border: none; cursor: pointer; font-size: 2rem; line-height: 1; color: var(--gray-200); padding: 0; transition: color 0.15s, transform 0.1s; }
+  .stars button:hover { transform: scale(1.1); }
+  .stars button.filled { color: var(--star); }
+  .rating-hint { font-size: 0.82rem; color: var(--gray-500); margin-top: 0.35rem; }
+
+  .radio-row { display: grid; grid-template-columns: 90px 1fr; gap: 0.5rem; margin-top: 0.5rem; align-items: center; }
+  .radio-opt { display: flex; align-items: center; gap: 0.4rem; font-size: 0.9rem; }
+  .radio-opt input { width: 16px; height: 16px; flex-shrink: 0; }
+
+  button.submit { width: 100%; background: var(--black); color: var(--white); border: none; padding: 0.9rem; border-radius: 8px; font-size: 1rem; font-weight: 600; margin-top: 2rem; cursor: pointer; transition: opacity 0.2s; }
+  button.submit:hover { opacity: 0.85; }
+  button.submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .error { color: #c0392b; font-size: 0.85rem; margin-top: 0.5rem; display: none; }
+  .thanks { text-align: center; padding: 1rem 0; }
+  .thanks h1 { margin-bottom: 0.75rem; }
+  .thanks p { color: var(--gray-700); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div id="form-view">
+    <div class="logo">TJ<span>Marketing</span></div>
+    <h1>Leave A Review</h1>
+    <p class="sub">Takes two minutes. Nothing posts to the site automatically — we read every submission and only publish what you say is OK to share.</p>
+
+    <form id="review-form" action="https://formspree.io/f/mqpklpyg" method="POST">
+      <label for="business">Business name</label>
+      <input type="text" id="business" name="Business name" required>
+
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="Your name" required>
+
+      <label>How would you rate working with us?</label>
+      <div class="stars" id="star-picker">
+        <button type="button" data-value="1" aria-label="1 star">★</button>
+        <button type="button" data-value="2" aria-label="2 stars">★</button>
+        <button type="button" data-value="3" aria-label="3 stars">★</button>
+        <button type="button" data-value="4" aria-label="4 stars">★</button>
+        <button type="button" data-value="5" aria-label="5 stars">★</button>
+      </div>
+      <input type="hidden" name="Rating (out of 5)" id="rating-value" required>
+      <div class="rating-hint" id="rating-hint">Click a star to rate</div>
+
+      <label for="review">Tell us about your experience</label>
+      <textarea id="review" name="Review" required placeholder="What was your hesitation before starting? What changed after we launched ads? Would you recommend us to another business?"></textarea>
+
+      <label>OK to post this publicly?</label>
+      <div class="radio-row">
+        <label class="radio-opt"><input type="radio" name="OK to post publicly" value="Yes" required> Yes</label>
+        <label class="radio-opt"><input type="radio" name="OK to post publicly" value="No"> No</label>
+      </div>
+
+      <label>OK to use your business name?</label>
+      <div class="radio-row">
+        <label class="radio-opt"><input type="radio" name="OK to use business name" value="Yes" required> Yes</label>
+        <label class="radio-opt"><input type="radio" name="OK to use business name" value="No"> No, keep it anonymous</label>
+      </div>
+
+      <div class="error" id="form-error">Please pick a star rating before submitting.</div>
+
+      <button type="submit" class="submit">Submit Review</button>
+    </form>
+  </div>
+
+  <div id="thanks-view" class="thanks" hidden>
+    <div class="logo">TJ<span>Marketing</span></div>
+    <h1>Thank you!</h1>
+    <p>Your review has been sent. We really appreciate it — this helps other businesses trust us enough to take the call.</p>
+  </div>
+</div>
+
+<script>
+  var picker = document.getElementById('star-picker');
+  var ratingValue = document.getElementById('rating-value');
+  var ratingHint = document.getElementById('rating-hint');
+  var stars = picker.querySelectorAll('button');
+  var current = 0;
+
+  function paint(n) {
+    stars.forEach(function (s) {
+      s.classList.toggle('filled', parseInt(s.dataset.value, 10) <= n);
+    });
+  }
+
+  stars.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      current = parseInt(btn.dataset.value, 10);
+      ratingValue.value = current;
+      ratingHint.textContent = current + ' out of 5';
+      paint(current);
+    });
+    btn.addEventListener('mouseenter', function () {
+      paint(parseInt(btn.dataset.value, 10));
+    });
+  });
+  picker.addEventListener('mouseleave', function () { paint(current); });
+
+  var form = document.getElementById('review-form');
+  var errorEl = document.getElementById('form-error');
+
+  form.addEventListener('submit', function (e) {
+    if (!current) {
+      e.preventDefault();
+      errorEl.style.display = 'block';
+      return;
+    }
+    errorEl.style.display = 'none';
+    e.preventDefault();
+    var data = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(function (res) {
+      if (res.ok) {
+        document.getElementById('form-view').hidden = true;
+        document.getElementById('thanks-view').hidden = false;
+      } else {
+        errorEl.textContent = 'Something went wrong sending your review — please try again.';
+        errorEl.style.display = 'block';
+      }
+    }).catch(function () {
+      errorEl.textContent = 'Something went wrong sending your review — please try again.';
+      errorEl.style.display = 'block';
+    });
+  });
+</script>
+
+</body>
+</html>
