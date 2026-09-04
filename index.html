@@ -439,25 +439,52 @@
   </div>
 </section>
 
-<!-- REVIEWS — displays approved reviews only. Copy a .review-card block per
-     approved review and delete .reviews-empty once you have your first one. -->
+<!-- REVIEWS — pulled live from the Google Sheet backend (Apps Script Web App).
+     Only rows marked Approved="yes" AND Public="Yes" in the sheet show up here.
+     Nothing here needs manual editing — approve a row in the Sheet and it
+     appears on next page load. REVIEWS_API below is the one thing to edit if
+     you ever redeploy the Apps Script and get a new URL. -->
 <section id="reviews">
   <div class="section-inner">
     <div class="section-tag">Reviews</div>
     <h2 class="section-title">What clients say</h2>
     <p class="section-sub">Every review here comes from an actual client — nothing is posted without their OK.</p>
 
-    <div class="reviews-empty">We're a newer agency, so this section is just getting started — ask for direct references on your audit call.</div>
-
-    <!-- Copy this block per approved review, then delete .reviews-empty above once you add the first one:
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <p class="review-text">"Quote goes here — 2-3 sentences from the client, unedited except for length."</p>
-      <div class="review-author">— [First name], [business type] in [City, State]</div>
-    </div>
-    -->
+    <div id="reviews-list"></div>
+    <div class="reviews-empty" id="reviews-empty">We're a newer agency, so this section is just getting started — ask for direct references on your audit call.</div>
   </div>
 </section>
+
+<script>
+  // ── REVIEWS BACKEND — Google Apps Script Web App URL. Edit this if you
+  // ever redeploy the script and get a new URL. ──
+  var REVIEWS_API = "https://script.google.com/macros/s/AKfycbw3AwtVy7XoGNZ9kkktDBEjNXPKzjHJNnNhtwApBIEGf-16s7s7782YxjWpJoO_yBkLXQ/exec";
+
+  fetch(REVIEWS_API)
+    .then(function (res) { return res.json(); })
+    .then(function (reviews) {
+      if (!reviews || !reviews.length) return; // leave the empty-state message showing
+      var list = document.getElementById('reviews-list');
+      var empty = document.getElementById('reviews-empty');
+      empty.style.display = 'none';
+      reviews.forEach(function (r) {
+        var stars = '★★★★★'.slice(0, Math.max(0, Math.min(5, r.rating || 0)));
+        var card = document.createElement('div');
+        card.className = 'review-card';
+        var authorLine = r.business ? (r.name + ', ' + r.business) : r.name;
+        card.innerHTML =
+          '<div class="review-stars">' + stars + '</div>' +
+          '<p class="review-text"></p>' +
+          '<div class="review-author"></div>';
+        card.querySelector('.review-text').textContent = '"' + r.review + '"';
+        card.querySelector('.review-author').textContent = '— ' + authorLine;
+        list.appendChild(card);
+      });
+    })
+    .catch(function () {
+      // backend unreachable — empty-state message stays up, page still works fine
+    });
+</script>
 
 <!-- ADD A REVIEW — links to a Google Form instead of email, so nothing lands
      in your inbox as the primary channel. REPLACE THE HREF BELOW with your
