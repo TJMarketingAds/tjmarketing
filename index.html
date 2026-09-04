@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TJ Marketing — Meta Ads for Local Service & E-Commerce</title>
-<meta name="description" content="Meta (Facebook & Instagram) ad management for local service businesses and e-commerce brands. Free audit, weekly reporting, month-to-month.">
+<title>TJ Marketing — Meta Ads for Home Improvement Contractors</title>
+<meta name="description" content="Meta (Facebook & Instagram) ad management for home improvement and exterior contractors — epoxy & concrete coatings, turf, fencing, hardscaping, decks, pool resurfacing. Free audit, weekly reporting, month-to-month.">
 
 <!-- ═══════════════════════════════════════════════════════════════════════════
      BOOKING LINKS — the only two URLs on this page. Change them here.
@@ -125,6 +125,54 @@
   .faq-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.6rem; }
   .faq-item p { font-size: 0.92rem; color: var(--gray-700); line-height: 1.7; }
 
+  /* Reviews */
+  .reviews-empty { border: 1.5px dashed var(--gray-200); border-radius: 14px; padding: 2.5rem; text-align: center; color: var(--gray-700); font-size: 0.95rem; max-width: 640px; }
+  .review-card { border: 1px solid var(--gray-200); border-radius: 14px; padding: 1.75rem; margin-bottom: 1rem; max-width: 640px; }
+  .review-stars { color: #f5a623; font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
+  .review-text { font-size: 0.98rem; color: var(--black); line-height: 1.65; margin-bottom: 0.6rem; }
+  .review-author { font-size: 0.85rem; color: var(--gray-500); }
+  .review-cta { margin-top: 2rem; }
+  .review-cta p { font-size: 0.92rem; color: var(--gray-700); margin-bottom: 0.85rem; }
+
+  .add-review { padding-top: 0; }
+  .add-review-box { background: var(--gray-100); border-radius: 16px; padding: 3rem; text-align: center; max-width: 640px; margin: 0 auto; }
+  .add-review-box h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 0.6rem; letter-spacing: -0.4px; }
+  .add-review-box p { font-size: 0.95rem; color: var(--gray-700); margin-bottom: 1.5rem; line-height: 1.6; }
+
+  /* Lead flow diagram */
+  .flow { background: var(--black); }
+  .flow .section-title { color: var(--white); }
+  .flow .section-tag { color: #6666ff; }
+  .flow .section-sub { color: #999; }
+  .flow-row { display: flex; align-items: center; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-top: 2rem; }
+  .flow-node { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+  .flow-icon { width: 68px; height: 68px; border-radius: 18px; display: flex; align-items: center; justify-content: center; }
+  .flow-icon svg { width: 32px; height: 32px; }
+  .flow-label { font-size: 0.82rem; color: #aaa; font-weight: 600; text-align: center; max-width: 110px; }
+  .flow-arrow { color: #444; font-size: 1.6rem; flex-shrink: 0; }
+  .icon-fb { background: linear-gradient(135deg,#1877F2,#0d5dc7); }
+  .icon-ig { background: linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7); }
+  .icon-lead { background: #1a1a1a; border: 1px solid #333; }
+  .icon-phone { background: #1a1a1a; border: 1px solid #333; }
+  @media (max-width: 640px) {
+    .flow-row { gap: 0.75rem; }
+    .flow-arrow { transform: rotate(90deg); }
+    .flow-icon { width: 56px; height: 56px; }
+    .flow-icon svg { width: 26px; height: 26px; }
+  }
+
+  /* Example ad creative */
+  .example-ad { background: var(--gray-100); }
+  .example-ad-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 3rem; align-items: center; }
+  .phone-frame { background: var(--black); border-radius: 32px; padding: 10px; max-width: 280px; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+  .phone-frame img { width: 100%; border-radius: 22px; display: block; }
+  .example-ad-body h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem; letter-spacing: -0.3px; }
+  .example-ad-body p { font-size: 0.98rem; color: var(--gray-700); line-height: 1.75; margin-bottom: 1rem; }
+  .example-ad-note { font-size: 0.8rem; color: var(--gray-500); font-style: italic; }
+  @media (max-width: 768px) {
+    .example-ad-inner { grid-template-columns: 1fr; }
+  }
+
   footer { background: var(--black); padding: 3rem 6%; }
 
   @media (max-width: 768px) {
@@ -143,6 +191,7 @@
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#how">How it works</a>
+    <a href="#reviews">Reviews</a>
     <a href="#audit">Free audit</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -156,9 +205,9 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-badge">Meta Ads — Local Service &amp; E-Commerce</div>
-  <h1>More Customers From <span>Facebook &amp; Instagram</span> Ads</h1>
-  <p>Strategy, creatives, copy, testing and optimization — handled for you. You get a clear report every week showing exactly where your money went and what it brought back. Month to month, cancel any time.</p>
+  <div class="hero-badge">Meta Ads For Home Improvement Contractors</div>
+  <h1>More Booked Jobs From <span>Facebook &amp; Instagram</span> Ads</h1>
+  <p>We run Meta ads for home improvement and exterior contractors — epoxy &amp; concrete coatings, turf, fencing, hardscaping, decks, pool resurfacing, and more. Strategy, creatives, copy, testing and optimization — handled for you. Month to month, cancel any time.</p>
   <div class="hero-btns">
     <a data-book="audit" href="https://calendly.com/tjmarketingleads/1hour" target="_blank" rel="noopener" class="btn-primary">Get Your Free Audit</a>
     <a href="#how" class="btn-secondary">See how it works</a>
@@ -192,21 +241,21 @@
   <div class="section-inner">
     <div class="section-tag">What We Do</div>
     <h2 class="section-title">Everything your ads need, handled</h2>
-    <p class="section-sub">Whether you're a local service business booking jobs or an online store selling products, the work is the same: get the right offer in front of the right people, then prove what it returned.</p>
+    <p class="section-sub">Get the right offer in front of homeowners who are ready to hire, then prove what it returned — from the ad to the lead landing straight in your phone.</p>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
         </div>
         <h3>Campaign Strategy</h3>
-        <p>Full-funnel structure built around how people actually buy from you — whether that's a form fill, a phone call, a booked appointment, or a checkout.</p>
+        <p>Full-funnel structure built around how homeowners actually hire a contractor — form fills, phone calls, and booked estimates.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
         </div>
         <h3>Ad Creative &amp; Copy</h3>
-        <p>Static, video and carousel ads written and produced for you. Before-and-afters for service work, product-led creative for stores. We test several angles, not one.</p>
+        <p>Static, video and carousel ads written and produced for you, built around job photos and before-and-afters. We test several angles, not one.</p>
       </div>
       <div class="service-card">
         <div class="service-icon">
@@ -236,6 +285,59 @@
         <h3>Reporting You Can Read</h3>
         <p>A weekly report in plain English: what we spent, what came back, what we tested, what won, and what we're changing next week. No dashboards you have to decode.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lead flow — visual instead of a paragraph. Shows the actual pipeline:
+     Facebook/Instagram ad -> Meta lead form -> straight into the contractor's
+     phone/CRM (Privyr named as an example; swap to whatever tool you push
+     leads into, or keep it generic). -->
+<section class="flow">
+  <div class="section-inner">
+    <div class="section-tag">How It Works</div>
+    <h2 class="section-title">From scroll to booked job</h2>
+    <p class="section-sub">The ad runs on Facebook and Instagram. The lead lands in your phone in seconds — no dashboards to check.</p>
+    <div class="flow-row">
+      <div class="flow-node">
+        <div class="flow-icon icon-fb"><svg viewBox="0 0 24 24" fill="#fff"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+        <div class="flow-label">Facebook Ad</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon icon-ig"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></div>
+        <div class="flow-label">Instagram Ad</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon icon-lead"><svg viewBox="0 0 24 24" fill="none" stroke="#6666ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><path d="M2 6h20v12H2z"/></svg></div>
+        <div class="flow-label">Meta Lead Form</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-icon icon-phone"><svg viewBox="0 0 24 24" fill="none" stroke="#6666ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <div class="flow-label">Your Phone / CRM (e.g. Privyr)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Example ad creative — shows what we actually produce, not just describes it.
+     IMPORTANT: this image is currently hotlinked from an AI-generation CDN link
+     (temporary). Download it and add it to this repo (e.g. /img/example-ad.jpg),
+     then swap the src below to the local path so the site doesn't depend on an
+     external host. This is a generic EXAMPLE creative, not a real client ad —
+     the caption says so on purpose; don't remove that line. -->
+<section class="example-ad">
+  <div class="example-ad-inner">
+    <div class="phone-frame">
+      <img src="img/example-ad-garage-epoxy.png" alt="Example Meta ad creative for a garage floor epoxy coating contractor, showing a before and after split with bold headline text">
+    </div>
+    <div class="example-ad-body">
+      <div class="section-tag">What We Make</div>
+      <h3>This is what shows up in someone's feed</h3>
+      <p>Before-and-after creative, bold headline text, built to stop a homeowner mid-scroll and get them to click. We write the copy, produce the visuals, and test multiple angles until we find what actually converts for your trade.</p>
+      <p class="example-ad-note">Example creative style — not a real client campaign.</p>
     </div>
   </div>
 </section>
@@ -340,6 +442,39 @@
   </div>
 </section>
 
+<!-- REVIEWS — displays approved reviews only. Copy a .review-card block per
+     approved review and delete .reviews-empty once you have your first one. -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="section-tag">Reviews</div>
+    <h2 class="section-title">What clients say</h2>
+    <p class="section-sub">Every review here comes from an actual client — nothing is posted without their OK.</p>
+
+    <div class="reviews-empty">We're a newer agency, so this section is just getting started — ask for direct references on your audit call.</div>
+
+    <!-- Copy this block per approved review, then delete .reviews-empty above once you add the first one:
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Quote goes here — 2-3 sentences from the client, unedited except for length."</p>
+      <div class="review-author">— [First name], [trade] contractor in [City, State]</div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ADD A REVIEW — separate section, own visual container, so it reads as
+     an invitation to act rather than part of the display above. Email-gated:
+     nothing posts automatically, you read every submission before it's public. -->
+<section class="add-review" id="add-review">
+  <div class="section-inner">
+    <div class="add-review-box">
+      <h3>Worked with TJ Marketing?</h3>
+      <p>Leave a review — takes two minutes, and it directly helps other contractors trust us enough to take the call.</p>
+      <a class="btn-primary" href="mailto:tjmarketingleads@gmail.com?subject=Review%20for%20TJ%20Marketing&body=Business%20name%3A%20%0AYour%20name%3A%20%0A%0A1.%20What%20was%20the%20biggest%20hesitation%20before%20working%20with%20us%3F%0A%0A2.%20What%20changed%20after%20we%20launched%20ads%3F%0A%0A3.%20Would%20you%20recommend%20us%20to%20another%20contractor%20-%20why%3F%0A%0AOK%20to%20post%20this%20publicly%3F%20(yes%2Fno)%3A%20%0AOK%20to%20use%20my%20business%20name%3F%20(yes%2Fno)%3A%20">Add A Review →</a>
+    </div>
+  </div>
+</section>
+
 <section id="faq">
   <div class="section-inner">
     <div class="section-tag">FAQ</div>
@@ -359,7 +494,7 @@
       </div>
       <div class="faq-item">
         <h3>Who do you work with?</h3>
-        <p>Local service businesses — trades, home services, installers, clinics, studios — and online stores. Both come down to the same thing: a clear offer, tracking that works, and creative that stops the scroll.</p>
+        <p>Home improvement and exterior contractors doing $3,000+ jobs — epoxy and concrete coatings, artificial turf, fencing, hardscaping, deck building, pool resurfacing, basement waterproofing, and garage storage systems. We don't work with restaurants, dentists, gyms, or ecommerce stores — staying focused on one kind of business is what makes the creative and targeting actually work.</p>
       </div>
       <div class="faq-item">
         <h3>Do you make the ad creatives?</h3>
@@ -378,7 +513,7 @@
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; padding-bottom: 2rem; border-bottom: 1px solid #222; margin-bottom: 2rem;">
       <div>
         <div style="font-size: 1.1rem; font-weight: 700; color: #fff;">TJ<span style="color: #6666ff;">Marketing</span></div>
-        <div style="font-size: 0.85rem; color: #555; margin-top: 0.35rem;">Meta Ads — Local Service &amp; E-Commerce</div>
+        <div style="font-size: 0.85rem; color: #555; margin-top: 0.35rem;">Meta Ads For Home Improvement Contractors</div>
       </div>
       <div style="display: flex; gap: 0.75rem; align-items: center;">
         <!-- TikTok -->
