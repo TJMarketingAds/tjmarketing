@@ -1,10 +1,9 @@
 <!--
   TJ Marketing — Leave A Review
-  Standalone page, matches the main site's look. Submits via Formspree
-  (endpoint: https://formspree.io/f/mqpklpyg).
-  Every submission shows up in your Formspree dashboard AND email —
-  you can turn off email notifications in Formspree's settings if you
-  only want the dashboard.
+  Standalone page, matches the main site's look. Submits straight into
+  the "TJ Marketing Reviews" Google Sheet via the Apps Script Web App
+  (REVIEWS_API below). New rows land as Approved="no" — nothing goes
+  public until you open the Sheet and type "yes" in that column.
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +67,7 @@
     <h1>Leave A Review</h1>
     <p class="sub">Takes two minutes. Nothing posts to the site automatically — we read every submission and only publish what you say is OK to share.</p>
 
-    <form id="review-form" action="https://formspree.io/f/mqpklpyg" method="POST">
+    <form id="review-form" action="https://script.google.com/macros/s/AKfycbw3AwtVy7XoGNZ9kkktDBEjNXPKzjHJNnNhtwApBIEGf-16s7s7782YxjWpJoO_yBkLXQ/exec" method="POST" target="hidden_submit_frame">
       <label for="business">Business name</label>
       <input type="text" id="business" name="Business name" required>
 
@@ -114,6 +113,8 @@
   </div>
 </div>
 
+<iframe name="hidden_submit_frame" id="hidden_submit_frame" style="display:none"></iframe>
+
 <script>
   var picker = document.getElementById('star-picker');
   var ratingValue = document.getElementById('rating-value');
@@ -142,6 +143,17 @@
 
   var form = document.getElementById('review-form');
   var errorEl = document.getElementById('form-error');
+  var iframe = document.getElementById('hidden_submit_frame');
+  var submitted = false;
+
+  // The form posts straight to the hidden iframe (avoids browser CORS
+  // restrictions on Apps Script). We just wait for that iframe to finish
+  // loading the response, then swap to the thank-you view.
+  iframe.addEventListener('load', function () {
+    if (!submitted) return; // ignore the iframe's initial blank load
+    document.getElementById('form-view').hidden = true;
+    document.getElementById('thanks-view').hidden = false;
+  });
 
   form.addEventListener('submit', function (e) {
     if (!current) {
@@ -150,24 +162,9 @@
       return;
     }
     errorEl.style.display = 'none';
-    e.preventDefault();
-    var data = new FormData(form);
-    fetch(form.action, {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
-    }).then(function (res) {
-      if (res.ok) {
-        document.getElementById('form-view').hidden = true;
-        document.getElementById('thanks-view').hidden = false;
-      } else {
-        errorEl.textContent = 'Something went wrong sending your review — please try again.';
-        errorEl.style.display = 'block';
-      }
-    }).catch(function () {
-      errorEl.textContent = 'Something went wrong sending your review — please try again.';
-      errorEl.style.display = 'block';
-    });
+    submitted = true;
+    // no e.preventDefault() — let the browser actually submit the form
+    // to the hidden iframe above
   });
 </script>
 
